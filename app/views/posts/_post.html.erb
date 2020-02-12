@@ -1,0 +1,6 @@
+<h1><%= post.title%></h1>
+<% post.categories.each do |c| %>
+    <span>#<%=c.name%></span>
+    <span>  </span>
+<%end%>
+<p><%= post.content %></p>

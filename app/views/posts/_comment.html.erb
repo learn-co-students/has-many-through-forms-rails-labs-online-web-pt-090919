@@ -1,0 +1,10 @@
+<h3>Comment:</h3>
+<%= form_for comment do |f| %>
+    <%= f.hidden_field :post_id, value: post_id %>
+    <%= f.text_area :content, placeholder: "Comment.."%> <br>
+    <%= f.collection_select :user_id, User.all, :id, :username, include_blank: "New User" %>
+    <%= f.fields_for :user, comment.build_user do |user| %>
+        <%= user.text_field :username, placeholder: "Username" %>  
+    <%end%>
+    <%= f.submit %>
+<%end%>
