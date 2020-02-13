@@ -24,9 +24,9 @@
   <%= form_for(@comment = Comment.new) do |f| %>
     <%= f.label :content %>
     <%= f.text_field :content %><br /><br />
-    <%= f.label "Username" %>
+    <%= f.label ":username" %>
     <%= f.collection_select :user_id, User.all, :id, :username, :include_blank => true %><br /><br />
-    <%= f.label "New User:" %>
+    <%= f.label :new_user %>
     <%= f.fields_for :user, @comment.build_user do |user| %>
       <%= user.text_field :username %>
     <% end %><br />
