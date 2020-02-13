@@ -9,6 +9,10 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    # Instantiate category so we can get a text field to fill in
+    #3.times do # ->If you want 3 text fields (3 categories)
+      @post.categories.build(name: "Sample Category")
+    #end
   end
 
   def create

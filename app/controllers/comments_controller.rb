@@ -1,4 +1,9 @@
 class CommentsController < ApplicationController
+  def new
+    @comment = Comment.new
+    # Instantiate comment so we can get a text field to fill in
+    @comment.user.build
+  end
 
   def create
     comment = Comment.create(comment_params)

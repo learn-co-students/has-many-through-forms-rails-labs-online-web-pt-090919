@@ -1,1 +1,25 @@
+<div class=post-content>
+<%= @post.content %>
+</div>
 
+<%= form_for post do |f| %>
+  <%= f.label "Title" %>
+  <%= f.text_field :title %><br>
+  <%= f.label "Content" %>
+  <%= f.text_area :content %><br>
+  <%= f.label "Categories" %>
+  Choose a category:<br />
+  <%= f.collection_check_boxes(:category_ids, Category.all, :id, :upcase_name) %>
+  <% # Will generate a checkbox named post[category_ids][] for eac cat in Cat.all  %>
+  <% # use the :id as value for checkbox %>
+  <% # use :name as label for checkbox %>
+  
+  Or create a new category:<br />
+  <% # Input field for new category %>
+  <% # make sure that your model responds to the nested writer %>
+  <%= f.fields_for :categories, post.categories.build do |categories_fields| %>
+    <%= categories_fields.text_field :name %>
+<% end %> 
+<br />
+<%= f.submit %>
+<% end %>
